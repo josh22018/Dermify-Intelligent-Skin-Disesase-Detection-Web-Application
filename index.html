@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dermify - AI Skin Disease Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Dermify</h1>
+    <p>Upload an image to detect skin disease using AI</p>
+    <form action="/result" method="post" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required />
+      <button type="submit">Detect Disease</button>
+    </form>
+  </div>
+
+  <div id="loader" class="loader-wrapper" style="display: none;">
+    <div class="spinner"></div>
+    <p>Analyzing image, please wait...</p>
+  </div>
+
+  <script>
+    document.querySelector("form").addEventListener("submit", () => {
+      document.getElementById("loader").style.display = "flex";
+    });
+  </script>
+</body>
+</html>

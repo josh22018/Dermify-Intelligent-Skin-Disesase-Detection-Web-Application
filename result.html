@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Detection Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Disease Detected: <span class="highlight">{{ disease }}</span></h2>
+    <img src="{{ image_url }}" alt="Uploaded Skin Image" class="preview-img" />
+    <div class="info">
+      {{ info|safe }}
+    </div>
+
+    <div class="chatbox">
+      <h3>Ask more about {{ disease }}:</h3>
+      <input type="text" id="query" placeholder="Type your question..." />
+      <button onclick="askQuestion('{{ disease }}')">Ask</button>
+      <div id="response"></div>
+    </div>
+
+    <a href="/" class="back">← Back to Upload</a>
+  </div>
+
+  <div id="chat-loader" class="loader-wrapper" style="display: none;">
+    <div class="spinner"></div>
+    <p>Thinking...</p>
+  </div>
+</body>
+</html>
